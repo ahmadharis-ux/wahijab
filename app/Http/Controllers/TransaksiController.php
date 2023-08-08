@@ -19,6 +19,7 @@ class TransaksiController extends Controller
         $validasiData = $request->validate([
             'user_id' => 'required',
             'produk_id' => 'required',
+            'promosi_id' => 'nullable',
             'harga' => 'required',
             'qty' => 'required',
             'deskripsi' => 'required',

@@ -4,11 +4,19 @@
     <u><p><i><a href="/admin/customer" style="color:green; text-decoration:none">Data Customer </a> > {{$DataCustomer->name}}</i> </p></u>
 </div>
 <div class="container mb-3">
-    {{-- <div class="row mb-4">
+    <div class="row mb-4">
         <div class="col">
             <div class="card">
                 <div class="card-header">Transaksi Bulan ini</div>
-                <div class="card-body"></div>
+                <div class="card-body">
+                    <ul>
+                        @foreach ($DataPembelianBulan->where('status_pembayaran','Sudah Dibayar') as $Data)
+                        <li>
+                            <p class="inline"><b>{{$Data->id}}</b> - <i>{{number_format($Data->subtotal)}}</i> - <u>{{$Data->diskon}}%</u> - <u><b>Rp. {{number_format($Data->total)}}</b></u></p>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="col">
@@ -17,7 +25,7 @@
                 <div class="card-body"></div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -46,14 +54,15 @@
                                         <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal Status Pembayaran</h1>
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal Status Pembayaran {{$riwayat->id}}</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            <form action="" method="POST">
+                                            <form action="/admin/customer/update-pembayaran/{{$riwayat->id}}" method="POST">
+                                            @method('PUT')
                                             @csrf
                                             <div class="modal-body">
-                                                <label for="">Status Pemabayaran</label>
-                                                <select name="" id="" class="form-select">
+                                                <label for="">Status Pembayaran</label>
+                                                <select name="status_pembayaran" id="" class="form-select">
                                                     <option value="{{$riwayat->status_pembayaran}}">{{$riwayat->status_pembayaran}}</option>
                                                     <option value="Sudah Dibayar">Sudah Dibayar</option>
                                                 </select>

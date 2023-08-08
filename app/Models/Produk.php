@@ -13,4 +13,11 @@ class Produk extends Model
     function kategori(){
         return $this->belongsTo(KategoriProduk::class);
     }
+    function transaksi(){
+        return $this->hasMany(Transaksi::class);
+    }
+
+    function getTerjual(){
+        Transaksi::where('status_pembayaran','Sudah Dibayara')->sum('qty');
+    }
 }

@@ -39,6 +39,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::prefix('customer')->group(function (){
         Route::get('/',[DataCustomerController::class,'index']);
         Route::get('/{id}',[DataCustomerController::class,'show']);
+        Route::put('/update-pembayaran/{id}',[DataCustomerController::class,'updatePembayaran']);
     });
     Route::prefix('produk')->group(function (){
         Route::get('/',[ProdukController::class,'index']);
@@ -65,3 +66,4 @@ Route::middleware(['auth'])->prefix('/')->group(function(){
 })->middleware('role:Member');
 Route::post('/transaksi/buy',[TransaksiController::class,'buy']);
 Route::get('/transaksi/list',[TransaksiController::class,'index']);
+Route::post('/diskon/apply',[PromosiController::class,'apply']);

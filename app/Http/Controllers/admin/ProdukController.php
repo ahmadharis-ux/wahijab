@@ -28,10 +28,11 @@ class ProdukController extends Controller
             'stok' => 'required',
             'deskripsi' => 'required',
             'kategori_id' => 'required',
-            'foto_produk' => 'nullable',
+            'foto_produk' => 'required|image|file',
         ]);
-        // dd($validasiData);
-        Produk::create($validasiData);
+        $validasiData['foto_produk'] = $request->file('foto_produk')->store('post-foto_produk');
+        dd($validasiData);
+        // Produk::create($validasiData);
         return back()->with('store','Produk Baru berhasil di tambahkan');
     }  
     function showSingle($id){

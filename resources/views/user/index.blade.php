@@ -38,8 +38,6 @@ https://templatemo.com/tm-559-zay-shop
 
    @include('user.layouts.kategori')
 
-    @include('user.layouts.best_products')
-
 
     @include('user.layouts.footer_script')
 </body>

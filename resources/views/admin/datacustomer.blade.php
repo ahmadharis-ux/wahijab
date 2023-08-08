@@ -11,7 +11,7 @@
                     <th>Nama Customer</th>
                     <th>Email</th>
                     <th>Whatsapp</th>
-                    <th>Age</th>
+                    <th>Since</th>
                     <th>Total Transaksi</th>
                     <th>Gatau</th>
                 </tr>
@@ -23,8 +23,8 @@
                     <td><a href="/admin/customer/{{$ListCustomer->id}}" style="color: green">{{$ListCustomer->name}}</a></td>
                     <td>{{$ListCustomer->email}}</td>
                     <td>{{$ListCustomer->whatsapp}}</td>
-                    <td></td>
-                    <td></td>
+                    <td>{{\Carbon\Carbon::parse($ListCustomer->created_at)->format('Y')}}</td>
+                    <td>Rp. {{number_format($ListCustomer->transaksi->where('status_pembayaran', 'Sudah Dibayar')->sum('total'))}}</td>
                     <td></td>
                 </tr>
                 @endforeach

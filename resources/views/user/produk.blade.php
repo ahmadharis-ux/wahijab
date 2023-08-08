@@ -17,7 +17,7 @@
                     </li>
                     @foreach ($ListAllKategori as $lisKategori)    
                     <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="">
                             {{$lisKategori->label}}
                         </a>
                     </li>
@@ -42,7 +42,7 @@
                             <div class="card-body">
                                 <a href="shop-single.html" class="h3 text-decoration-none">{{$ListProduk->name}}</a>
                                 <p class=" mb-2">Rp. {{number_format($ListProduk->harga)}}</p>
-                                <p class="d-flex justify-content-end mb-0">Terjual : <b style="color: green">20</b></p>
+                                <p class="d-flex justify-content-end mb-0">Terjual : <b style="color: green">{{$ListProduk->transaksi->where('status_pembayaran','Sudah Dibayar')->sum('qty')}}</b></p>
                             </div>
                         </div>
                     </div>

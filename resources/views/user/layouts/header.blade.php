@@ -15,7 +15,7 @@
                 @if (auth()->check() && auth()->user()->role == 'Member')
                 <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/promosi">Promosi</a>
@@ -30,7 +30,7 @@
                 @elseif(auth()->check() && auth()->user()->role == 'Admin')
                 <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Dashboard</a>
+                        <a class="nav-link" href="/admin/dashboard">Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/customer">Data Customer</a>

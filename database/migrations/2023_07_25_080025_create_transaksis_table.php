@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('harga');
             $table->integer('qty');
             $table->text('deskripsi');
+            $table->foreignId('promosi_id')->nullable();
             $table->integer('diskon')->nullable();
             $table->integer('subtotal');
             $table->integer('potongan')->default(0);
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('produk_id')->references('id')->on('produks');
+            $table->foreign('promosi_id')->references('id')->on('promosis');
 
         });
     }
